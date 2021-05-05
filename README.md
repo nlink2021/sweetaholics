@@ -18,6 +18,7 @@ A local bakery website that specializes in cinnamon rolls and other sweets.
 
 ---
 ![ERD](./ERD.png)
+![Wireframe](./Untitled.jpg)
 
 
 
