@@ -7,7 +7,11 @@ const Home = () =>{
 
     return(
         <div className = 'page-container'>
-            Home Page
+            <div className='welcomeMsg'>
+                Welcome to Sweetaholics! Your local bakery specializing in all sorts of delicious treats.
+                Sign up or Log in now to start ordering with us to get that sugar fix now!
+            </div>
+
         </div>
     )
 }
