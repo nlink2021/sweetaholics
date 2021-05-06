@@ -13,9 +13,7 @@ const SignupLogin = (props) =>{
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [zip, setZip] = useState('')
-    const [fields, setFields] = useState('')
-    const [error, setError] = useState([])
-
+  
     useEffect(()=>{
         setName('')
         setEmail('')
@@ -51,7 +49,7 @@ const SignupLogin = (props) =>{
                 setUser(res.data.user)
             }
         } catch (error) {
-            alert('lala')
+            alert('Login failed')
         }
     }
     
