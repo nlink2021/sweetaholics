@@ -14,6 +14,7 @@ const UserProvider = ({children}) => {
                     Authorization: userId
                 }
             })
+            console.log(res)
             setUser(res.data.user)
         }
     }
