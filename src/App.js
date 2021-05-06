@@ -14,6 +14,8 @@ function App() {
   const [user,setUser] = userState
   const [signupOrLogin, setSignupOrLogin] = useState('')
 
+
+  
   useEffect(()=>{fetchUser()},[])
   return (
     <div className="App">
