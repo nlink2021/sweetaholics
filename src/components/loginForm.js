@@ -9,11 +9,11 @@ const LoginForm = (props) =>{
         <div className = 'center'>
             <div className = 'form-container'>
                 <h3>Login!</h3>
-                <div className='form'>          
-                <input type='text' placeholder='Email' value={props.email} onChange={(e)=>{props.setEmail(e.target.value)}} />   
-                <input type='password' placeholder='Password' value={props.password} onChange={(e)=>{props.setPassword(e.target.value)}} />
-                <input type='submit' value="Submit" onClick={(e)=>{props.handleLogin(e)}}  />
-                </div>
+                <form className='form'  onSubmit={(e)=>{props.handleLogin(e)}}  >          
+                <input type='text' placeholder='Email' value={props.email} onChange={(e)=>{props.setEmail(e.target.value)}} required/>   
+                <input type='password' placeholder='Password' value={props.password} onChange={(e)=>{props.setPassword(e.target.value)}} required/>
+                <input type='submit' value="Submit"/>
+                </form>
             </div>
         </div>
 

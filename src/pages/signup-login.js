@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import {UserContext} from '../context/userContext'
 import SignUpForm from '../components/signupForm'
 import LoginForm from '../components/loginForm'
@@ -13,9 +13,21 @@ const SignupLogin = (props) =>{
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [zip, setZip] = useState('')
+    const [fields, setFields] = useState('')
+    const [error, setError] = useState([])
+
+    useEffect(()=>{
+        setName('')
+        setEmail('')
+        setPassword('')
+        setCity('')
+        setState('')
+        setZip('')
+    },[])
 
     const handleSignUp = async (e) => {
         e.preventDefault()
+        
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/signup`,{
             name, email, password, city, state, zip
         })
@@ -30,14 +42,16 @@ const SignupLogin = (props) =>{
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/login`,{
-            email, password
-        })
-        if(res.data.message === 'login successful'){
-            localStorage.setItem('userId', res.data.user.id)
-            setUser(res.data.user)
-        }else{
-            alert('Incorrect email or password')
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/login`,{
+                email, password
+            })
+            if(res.data.message === 'login successful'){
+                localStorage.setItem('userId', res.data.user.id)
+                setUser(res.data.user)
+            }
+        } catch (error) {
+            alert('lala')
         }
     }
     
