@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+.App {
+  text-align: center;
+  background-image: url('https://nrsplus.com/wp-content/uploads/2019/08/Bakery-background-min-scaled.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  font-family: 'Cookie';
+  font-size: 70pt;
+  color: rgb(204, 72, 94);
+  padding: 20px;
+  margin: 15px;
+}
+
+.headerStyle {
+  background: rgba(235, 190, 190, 0.671);
+}
+
 html{
   height: 100%;
   width: 100%;
@@ -24,6 +51,9 @@ body{
   height: 8%;
   padding: 5px;
   margin:5px;
+  font-family: 'Amatic SC';
+  font-size: 25pt;
+  background: rgba(235, 190, 190, 0.671);
 }
 
 
@@ -64,6 +94,7 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  background: rgba(223, 101, 101, 0.801);
 }
 .form{
   height: 80%;
@@ -77,4 +108,16 @@ input{
   margin:5px;  
 }
 
+h3 {
+  color: white;
+}
 
+.navFont {
+  font-family: 'Amatic SC';
+  font-size: 25pt;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(207, 40, 68);
+}
