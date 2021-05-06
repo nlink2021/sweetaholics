@@ -103,7 +103,7 @@ body{
 
 
 input{
-  margin:5px;  
+  margin:5px;
 }
 
 h3 {
@@ -123,8 +123,12 @@ a {
 .welcomeMsg {
   background: rgba(233, 112, 112, 0.815);
   width: 600px;
-  height: 50%;
+  height: fit-content;
   font-family: 'Amatic SC';
   font-size: 42pt;
   border-radius: 5px;
+}
+
+.welcomeText{
+  height: 60%;
 }
