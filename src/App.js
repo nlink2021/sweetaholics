@@ -10,11 +10,12 @@ import MyCart from './pages/myCart'
 import MyOrders from './pages/myOrders'
 
 function App() {
-  const {userState, fetchUser} = useContext(UserContext)
+  const {userState, fetchUser, fetchSweets} = useContext(UserContext)
   const [user,setUser] = userState
   const [signupOrLogin, setSignupOrLogin] = useState('')
 
   useEffect(()=>{fetchUser()},[])
+  useEffect(()=>{fetchSweets()},[])
   return (
     <div className="App">
       <NavBar setSignupOrLogin = {setSignupOrLogin}/>

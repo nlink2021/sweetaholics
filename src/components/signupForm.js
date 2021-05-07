@@ -7,7 +7,7 @@ const SignUpForm = (props) =>{
 
     
     return(
-        <div className = 'center'>
+        <div className = 'center-row'>
             <div className = 'form-container'>
                 <h3>Sign Up!</h3>
                 <form className='form' onSubmit={(e)=>{props.handleSignUp(e)}} >            

@@ -2,33 +2,54 @@ import axios from 'axios'
 import {useContext, useEffect, useState} from 'react'
 import {UserContext} from '../context/userContext'
 import Sweet from '../components/sweet'
-
+import PopUp from '../components/popUp'
+import {render} from 'react'
 
 
 const AllProducts = () =>{
-    const [ sweets, setSweets] = useState([])
-    const {userState} = useContext(UserContext)
+    const {userState, sweetsState, fetchSweets} = useContext(UserContext)
     const [user,setUser] = userState
+    const [sweets, setSweets] = sweetsState
+    const [currentInfo, setCurrentInfo] = useState({})
+    const [showInfo, setShowInfo] = useState(false)
 
-    const getProducts = async ()=>{
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/`)
-        setSweets(res.data.item)
+    const togglePopup = (item) =>{
+        setCurrentInfo(item)
+        setShowInfo(!showInfo)
     }
-    useEffect(()=>{getProducts()},[])
-
 
     return(
-        <div className = "itemTitle">
-            <h2>All Products</h2>
-
+        <>
+         {showInfo === true &&
+            <PopUp togglePopup={togglePopup} currentInfo={currentInfo} /> 
+        }
         <div className = 'page-container'>
-            {sweets.map(item =>
-            <div key = {item.id}>
-                <Sweet item = {item} />
+            <div className = 'center-column'>
+                <div className='title'>Cinnies</div>
+                <div className = 'sweets-section'>
+                    {sweets.map(item =>
+                    item.type === 'Cinnamon Roll' &&
+                        <Sweet key = {item.id} item = {item} togglePopup={togglePopup} isPopup={false}/>
+                    )}
+                </div>
+                <div className='title'>Cookies</div>
+                <div className = 'sweets-section'>
+                    {sweets.map(item =>
+                    item.type === 'Cookie' &&
+                        <Sweet key = {item.id} item = {item} togglePopup={togglePopup} isPopup={false} />
+                    )}
+                </div>
+                <div className='title'>Brownies</div>
+                <div className = 'sweets-section'>
+                    {sweets.map(item =>
+                    item.type === 'Brownie' &&
+                        <Sweet key = {item.id} item = {item} togglePopup={togglePopup} isPopup={false} />
+                    )}
+                </div>
+                    
             </div>
-                )}
-        </div>
-        </div>
+         </div>
+       </>
     )
 }
 export default AllProducts
