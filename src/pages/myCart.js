@@ -11,11 +11,15 @@ const MyCart = () =>{
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
             cartId: user.cart.id
         })
-        setCartItems(res.data.items)
+        if (res.data.items.length > 0){
+           setCartItems(res.data.items)
+        }
+
+
     }
 
     useEffect(()=>{getItems()},[])
-    
+
     return(
         <div className = 'page-container'>
             <div className = 'center-row'>
