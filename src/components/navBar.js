@@ -11,6 +11,8 @@ const NavBar = (props) =>{
             Sweet-A-Holics 
             </div>
 
+
+
             {!user.id ?
             <nav className = 'logged-out-links'>
                 <Link to= '/'>Home</Link>{'|'}
