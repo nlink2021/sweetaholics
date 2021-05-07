@@ -6,7 +6,7 @@ const LoginForm = (props) =>{
     const [user,setUser] = userState
     
     return(
-        <div className = 'center'>
+        <div className = 'center-row'>
             <div className = 'form-container'>
                 <h3>Login!</h3>
                 <form className='form'  onSubmit={(e)=>{props.handleLogin(e)}}  >          

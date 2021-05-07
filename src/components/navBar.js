@@ -7,7 +7,10 @@ const NavBar = (props) =>{
     const [user,setUser] = userState
     return(
         <div className = 'page-header'>
-            <h1>Sweet-A-Holics</h1>
+            <div className='logo'>
+            Sweet-A-Holics 
+            </div>
+
             {!user.id ?
             <nav className = 'logged-out-links'>
                 <Link to= '/'>Home</Link>{'|'}
