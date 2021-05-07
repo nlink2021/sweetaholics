@@ -13,6 +13,7 @@ const MyCart = () =>{
     const [checkout, setCheckout] = useState(false)
 
     const getItems = async () =>{
+
         if(user.cart.id){
             const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
                 cartId: user.cart.id
@@ -28,13 +29,14 @@ const MyCart = () =>{
             }
             setTotal(sum)
         }
+
     }
   
 
     useEffect(()=>{getItems()},[])
     useEffect(()=>{setCheckout(false)},[])
 
-    
+
     return(
         <div className = 'page-container'>
             <div className = 'center-row'>
