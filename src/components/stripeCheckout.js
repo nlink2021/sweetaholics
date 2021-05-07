@@ -23,7 +23,11 @@ const Stripe = (props) =>{
         console.log(res);
         if(res.status == 200){
             const rez = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/orders/create`,{
-                address,city,state,zip,total:props.total
+              address,city,state,zip,total:props.total
+            },{
+                headers:{
+                    Authorization: user.id
+                }
             })
             console.log(rez);
         }
