@@ -147,7 +147,7 @@ a {
   height: 33%;
   width: 95%;
   border-top: 1px solid black;
-  
+
 }
 
 .title{
@@ -173,7 +173,6 @@ a {
 .each-sweet:hover{
   cursor: pointer;
 }
-
 
 .popup{
   height: 65%;
