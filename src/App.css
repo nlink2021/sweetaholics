@@ -241,6 +241,11 @@ a {
 .added{
   font-family: 'Amatic SC';
 }
+
+.remove{
+  font-size: 30%;
+  width: 30%;
+}
 .added-message{
   display: flex;
   flex-direction: column;
@@ -265,4 +270,22 @@ a {
   align-items: center;
   box-shadow: 0 1px 6px rgb(0 0 0 / 50%), 0 1px 4px rgb(0 0 0 / 50%);
   overflow-y: scroll;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.cartItem{
+  border-bottom: 1px solid black;
+  display: flex;
+  width: 60%;
+  height: 10%;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-title{
+  width:60%
+}
+
+.cart-price{
+  width: 30%;
 }
