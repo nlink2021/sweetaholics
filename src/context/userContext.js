@@ -22,10 +22,11 @@ const UserProvider = ({children}) => {
 
     const fetchSweets = async ()=>{
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/`)
+        console.log(res.data);
         setSweets(res.data.item)
     }
 
-    
+
 
 
 
