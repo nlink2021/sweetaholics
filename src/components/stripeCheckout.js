@@ -6,6 +6,10 @@ import StripeCheckout from 'react-stripe-checkout'
 const Stripe = (props) =>{
     const {userState} = useContext(UserContext)
     const [user,setUser] = userState
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+    const [zip, setZip] = useState('')
     const [product] = useState({
         price: props.total
     })
@@ -19,9 +23,33 @@ const Stripe = (props) =>{
         console.log(res);
     }
 
+    // const submitForm = (e) => {
+    //     e.preventDefault()
+    //     axios.post({})
+    //     .then((response) => {
+            
+    //     })
+    // }
     
     return(
-        <div>
+
+        <div classname="orderForm">
+            <h3>Order Form</h3>
+
+            <form className="order-form" onSubmit={submitForm}>
+                <label htmlFor="formName">Address</label>
+                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} /><br/>
+
+                <label htmlFor="formName">City</label>
+                <input type="text" value={city} onChange={(e) => setCity(e.target.value)} /><br/>
+
+                <label htmlFor="formName">State</label>
+                <input type="text" value={state} onChange={(e) => setState(e.target.value)} /><br/>
+
+                <label htmlFor="formName">Zip Code</label>
+                <input type="text" value={zip} onChange={(e) => setZip(e.target.value)} /><br/>
+            </form>
+
             <StripeCheckout 
                 stripeKey = 'pk_test_51IoVTMBtNKjJS2GcZ78bHAQxdC6ePvIKYG5vLVRZ936kzcCYsaJWTdwJrtDA87njveQq51tHbZo6aa6TiLbE0tjq00dS1eeeL9'
                 token = {makePayment}
