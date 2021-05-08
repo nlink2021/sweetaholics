@@ -12,6 +12,8 @@ const MyCart = (props) =>{
     const [total, setTotal] = useState(0)
     const [checkout, setCheckout] = useState(false)
 
+    useEffect(()=>{props.setShouldRedirect(false)},[])
+
 
     const getItems = async () =>{
         if(user.cart.id){
@@ -41,7 +43,7 @@ const MyCart = (props) =>{
         <div className = 'page-container'>
             <div className = 'center-row'>
                 <div className = 'cart'>
-                    {checkout === false ? 
+                    {checkout === false && cartItems.length > 0 ? 
                     <>
                     {cartItems.map((item,i)=>
                         <CartItem key = {i} item = {item} getItems={getItems}/>
@@ -52,10 +54,15 @@ const MyCart = (props) =>{
                         <button className = 'button remove' onClick={()=>{setCheckout(true)}}>Checkout</button>
                     </div>
                      </>
-                :
-                    <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} />
+
+                    :checkout === false && cartItems.length === 0 ?
+                        <div>
+                            Your cart is empty!
+                        </div>
+                    :
+                    <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} cartId = {user.cart.id} />
                 
-                }
+                    }
 
                 </div>
             </div>

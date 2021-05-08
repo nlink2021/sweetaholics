@@ -38,7 +38,7 @@ function App() {
         } 
       }} />
       
-      <Route exact path= '/orders' render={()=> <MyOrders />} />
+      <Route exact path= '/orders' render={()=> <MyOrders setShouldRedirect={setShouldRedirect}/>} />
 
 
 

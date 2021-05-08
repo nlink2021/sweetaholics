@@ -30,12 +30,17 @@ const Stripe = (props) =>{
                 }
             })
             if(rez.data.message === 'order created'){
-                props.cartItems.forEach(async item=>{
+                await props.cartItems.forEach(async item=>{
                     const rezz = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/orders/add`,{
                         orderId: rez.data.order.id,
                         itemId: item.id
                     })
                 })
+                const rezzz = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/empty`,{
+                    cartId: props.cartId
+                })
+                console.log(rezzz);
+
                 props.setShouldRedirect(true)
             }
         }

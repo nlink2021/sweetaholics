@@ -4,13 +4,15 @@ import {UserContext} from '../context/userContext'
 import moment from 'moment'
 import PopUp from '../components/popUp'
 
-const MyOrders = () =>{
+const MyOrders = (props) =>{
     const {userState} = useContext(UserContext)
     const [user,setUser] = userState
     const [history, setHistory] = useState([])
     const [currentOrder, setCurrentOrder] = useState([])
     const [orderItems, setOrderItems] = useState([])
     const [showItems, setShowItems] = useState(false)
+
+    useEffect(()=>{props.setShouldRedirect(false)},[])
 
     const togglePopup = () =>{
         setShowItems(!showItems)
