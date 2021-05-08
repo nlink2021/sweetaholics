@@ -6,6 +6,7 @@ const UserContext = createContext()
 const UserProvider = ({children}) => {
     const [user,setUser] = useState({})
     const [sweets, setSweets] = useState([])
+    
 
     const fetchUser = async () => {
         let userId = localStorage.getItem('userId') 
@@ -22,7 +23,7 @@ const UserProvider = ({children}) => {
 
     const fetchSweets = async ()=>{
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/items/`)
-        console.log(res.data);
+        // console.log(res.data);
         setSweets(res.data.item)
     }
 

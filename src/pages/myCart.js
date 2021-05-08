@@ -5,15 +5,17 @@ import CartItem from '../components/cartItem'
 import Checkout from '../components/checkout'
 import Stripe from '../components/stripeCheckout'
 
-const MyCart = () =>{
-    const {userState} = useContext(UserContext)
+const MyCart = (props) =>{
+    const {userState, fetchUser} = useContext(UserContext)
     const [user,setUser] = userState
     const [cartItems,setCartItems] = useState([])
     const [total, setTotal] = useState(0)
     const [checkout, setCheckout] = useState(false)
 
-    const getItems = async () =>{
+    useEffect(()=>{props.setShouldRedirect(false)},[])
 
+
+    const getItems = async () =>{
         if(user.cart.id){
             const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
                 cartId: user.cart.id
@@ -41,7 +43,7 @@ const MyCart = () =>{
         <div className = 'page-container'>
             <div className = 'center-row'>
                 <div className = 'cart'>
-                    {checkout === false ? 
+                    {checkout === false && cartItems.length > 0 ? 
                     <>
                     {cartItems.map((item,i)=>
                         <CartItem key = {i} item = {item} getItems={getItems}/>
@@ -52,10 +54,15 @@ const MyCart = () =>{
                         <button className = 'button remove' onClick={()=>{setCheckout(true)}}>Checkout</button>
                     </div>
                      </>
-                :
-                    <Stripe total={total}/>
+
+                    :checkout === false && cartItems.length === 0 ?
+                        <div>
+                            Your cart is empty!
+                        </div>
+                    :
+                    <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} cartId = {user.cart.id} />
                 
-                }
+                    }
 
                 </div>
             </div>
