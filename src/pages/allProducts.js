@@ -21,7 +21,7 @@ const AllProducts = () =>{
     return(
         <>
          {showInfo === true &&
-            <PopUp togglePopup={togglePopup} currentInfo={currentInfo} /> 
+            <PopUp togglePopup={togglePopup} currentInfo={currentInfo} isTreat={true} /> 
         }
         <div className = 'page-container'>
             <div className = 'center-column'>

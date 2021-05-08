@@ -5,15 +5,15 @@ import CartItem from '../components/cartItem'
 import Checkout from '../components/checkout'
 import Stripe from '../components/stripeCheckout'
 
-const MyCart = () =>{
-    const {userState} = useContext(UserContext)
+const MyCart = (props) =>{
+    const {userState, fetchUser} = useContext(UserContext)
     const [user,setUser] = userState
     const [cartItems,setCartItems] = useState([])
     const [total, setTotal] = useState(0)
     const [checkout, setCheckout] = useState(false)
 
-    const getItems = async () =>{
 
+    const getItems = async () =>{
         if(user.cart.id){
             const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
                 cartId: user.cart.id
@@ -53,7 +53,7 @@ const MyCart = () =>{
                     </div>
                      </>
                 :
-                    <Stripe total={total}/>
+                    <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} />
                 
                 }
 

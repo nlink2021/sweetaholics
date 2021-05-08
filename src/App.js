@@ -13,9 +13,11 @@ function App() {
   const {userState, fetchUser, fetchSweets} = useContext(UserContext)
   const [user,setUser] = userState
   const [signupOrLogin, setSignupOrLogin] = useState('')
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   useEffect(()=>{fetchUser()},[])
   useEffect(()=>{fetchSweets()},[])
+  useEffect(()=>{setShouldRedirect(false)},[])
   return (
     <div className="App">
       <NavBar setSignupOrLogin = {setSignupOrLogin}/>
@@ -28,7 +30,14 @@ function App() {
       }} />
 
       <Route exact path= '/products' render={()=> <AllProducts />} />
-      <Route exact path= '/cart' render={()=> <MyCart />} />
+      <Route exact path= '/cart' render={()=> {
+        if(shouldRedirect === true){
+          return <Redirect to = '/orders' />
+        }else{
+          return <MyCart setShouldRedirect={setShouldRedirect}/>
+        } 
+      }} />
+      
       <Route exact path= '/orders' render={()=> <MyOrders />} />
 
 
