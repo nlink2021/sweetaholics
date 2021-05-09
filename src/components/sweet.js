@@ -32,16 +32,18 @@ const Sweet = (props) => {
         :props.isPopup === true && added === false ?
             <div className='popup-sweet'>
                 <div className='sweet-title'>{props.item.name}</div>
-                <div className='picture'>Picture Placeholder</div>
+                <div className='picture'>
+                    <img src = {`${props.item.image}`}></img>
+                </div>
                 <div>{props.item.description}</div>
                 <div>${props.item.price}.00</div>
                 <button className='button add' onClick={()=>{addToCart()}}>Add To Cart</button>
-            </div>    
+            </div>
         :
             <div className='added-message'>
                 <h1>Item has been added to cart!</h1>
                     <button className='button added'>
-                        <Link to='/cart'id="view-cart">View Cart </Link>   
+                        <Link to='/cart'id="view-cart">View Cart </Link>
                     </button>
                     <button className='button added' onClick={()=>{props.togglePopup(props.item)}}>Continue shopping</button>
             </div>

@@ -120,6 +120,11 @@ h3 {
   color: white;
 }
 
+h4 {
+  color: rgba(233, 112, 112, 0.815);
+
+}
+
 
 .navFont {
   font-family: 'Amatic SC';
@@ -130,7 +135,9 @@ a {
   text-decoration: none;
   color: rgb(207, 40, 68);
 }
-
+a:hover{
+  color: white;
+}
 .welcomeMsg {
   background: rgba(233, 112, 112, 0.815);
   font-family: 'Amatic SC';
@@ -147,7 +154,7 @@ a {
   height: 33%;
   width: 95%;
   border-top: 1px solid black;
-  
+
 }
 
 .title{
@@ -173,7 +180,6 @@ a {
 .each-sweet:hover{
   cursor: pointer;
 }
-
 
 .popup{
   height: 65%;
@@ -221,9 +227,14 @@ a {
 }
 
 .picture{
-  border: 1px solid black;
-  height: 50%;
+
+  height: 60%;
   width: 50%;
+}
+
+img{
+  height: 100%;
+  width: 100%;
 }
 .button{
   background-color:rgba(223, 101, 101, 0.801);
@@ -246,6 +257,12 @@ a {
 .remove{
   font-size: 30%;
   width: 30%;
+}
+
+.orderHistory{
+  font-size: 60%;
+  width: 20%;
+  height: 50%;
 }
 .added-message{
   display: flex;
@@ -295,10 +312,21 @@ a {
   width: 60%;
   height: 60%;
 }
+
+.order-header{
+  display: flex;
+  align-items: center;
+  height: 30%;
+  justify-content: space-evenly;
+
+}
+
 .order{
+  border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  height: 30%;
 }
 
 .order-info-container{
