@@ -15,21 +15,31 @@ const MyCart = (props) =>{
 
 
     const getItems = async () =>{
-        if(user.cart.id){
-            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
-                cartId: user.cart.id
+        // console.log(user);
+        let userId = localStorage.getItem('userId') 
+            const rez = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
+                headers:{
+                    Authorization: userId
+                }
             })
-            setCartItems(res.data.items)
-            let prices = []
-            res.data.items.forEach((item)=>{
-                prices.push(item.price)
-            })
-            const sum = prices.reduce(add,0)
-            function add(accumulator, a) {
-                return accumulator + a;
+            setUser(rez.data.user)
+            if(rez.data.message === 'found user'){
+                
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
+                    cartId: rez.data.user.cart.id
+                })
+                setCartItems(res.data.items)
+                let prices = []
+                res.data.items.forEach((item)=>{
+                    prices.push(item.price)
+                })
+                const sum = prices.reduce(add,0)
+                function add(accumulator, a) {
+                    return accumulator + a;
+                }
+                setTotal(sum)
             }
-            setTotal(sum)
-        }
+        
 
     }
   
