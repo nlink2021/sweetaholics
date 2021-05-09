@@ -2,7 +2,6 @@ import axios from 'axios'
 import {useContext, useEffect, useState} from 'react'
 import {UserContext} from '../context/userContext'
 import CartItem from '../components/cartItem'
-import Checkout from '../components/checkout'
 import Stripe from '../components/stripeCheckout'
 
 const MyCart = (props) =>{

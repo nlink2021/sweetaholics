@@ -43,8 +43,6 @@ const MyOrders = (props) =>{
         togglePopup()
     }
     
-
-
     return(
         <>
          {showItems === true &&

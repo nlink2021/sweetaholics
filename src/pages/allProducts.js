@@ -1,9 +1,8 @@
-import axios from 'axios'
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useState} from 'react'
 import {UserContext} from '../context/userContext'
 import Sweet from '../components/sweet'
 import PopUp from '../components/popUp'
-import {render} from 'react'
+
 
 
 const AllProducts = () =>{
