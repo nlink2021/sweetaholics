@@ -289,3 +289,8 @@ a {
 .cart-price{
   width: 30%;
 }
+
+.picture{
+  display: flex;
+
+}

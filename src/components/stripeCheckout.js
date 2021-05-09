@@ -21,22 +21,22 @@ const Stripe = (props) =>{
 
         })
         console.log(res);
+        if(res.status == 200){
+            const rez = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/orders/create`,{
+                address,city,state,zip,total:props.total
+            })
+            console.log(rez);
+        }
     }
 
-    // const submitForm = (e) => {
-    //     e.preventDefault()
-    //     axios.post({})
-    //     .then((response) => {
-            
-    //     })
-    // }
+
     
     return(
 
         <div classname="orderForm">
             <h3>Order Form</h3>
 
-            <form className="order-form" onSubmit={submitForm}>
+            <form className="order-form">
                 <label htmlFor="formName">Address</label>
                 <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} /><br/>
 
