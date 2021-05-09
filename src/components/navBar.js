@@ -11,7 +11,9 @@ const NavBar = (props) =>{
             Sweet-A-Holics
             </div>
 
-            {!user.id ?
+
+
+            {user!== undefined && !user.id ?
             <nav className = 'logged-out-links'>
                 <Link to= '/'>Home</Link>{'|'}
                 <span onClick={()=>{props.setSignupOrLogin('login')}}>

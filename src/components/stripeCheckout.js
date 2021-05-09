@@ -23,17 +23,33 @@ const Stripe = (props) =>{
         console.log(res);
         if(res.status == 200){
             const rez = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/orders/create`,{
-                address,city,state,zip,total:props.total
+              address,city,state,zip,total:props.total
+            },{
+                headers:{
+                    Authorization: user.id
+                }
             })
-            console.log(rez);
+            if(rez.data.message === 'order created'){
+                await props.cartItems.forEach(async item=>{
+                    const rezz = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/orders/add`,{
+                        orderId: rez.data.order.id,
+                        itemId: item.id
+                    })
+                })
+                const rezzz = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/empty`,{
+                    cartId: props.cartId
+                })
+                console.log(rezzz);
+
+                props.setShouldRedirect(true)
+            }
         }
     }
-
 
     
     return(
 
-        <div classname="orderForm">
+        <div className="orderForm">
             <h3>Order Form</h3>
 
             <form className="order-form">
