@@ -42,7 +42,7 @@ const MyCart = (props) =>{
         
 
     }
-  
+
 
     useEffect(()=>{getItems()},[])
     useEffect(()=>{setCheckout(false)},[])
@@ -52,7 +52,7 @@ const MyCart = (props) =>{
         <div className = 'page-container'>
             <div className = 'center-row'>
                 <div className = 'cart'>
-                    {checkout === false && cartItems.length > 0 ? 
+                    {checkout === false && cartItems.length > 0 ?
                     <>
                     {cartItems.map((item,i)=>
                         <CartItem key = {i} item = {item} getItems={getItems}/>
@@ -70,7 +70,7 @@ const MyCart = (props) =>{
                         </div>
                     :
                     <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} cartId = {user.cart.id} />
-                
+
                     }
 
                 </div>

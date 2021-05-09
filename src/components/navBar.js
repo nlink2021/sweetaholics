@@ -8,7 +8,7 @@ const NavBar = (props) =>{
     return(
         <div className = 'page-header'>
             <div className='logo'>
-            Sweet-A-Holics 
+            Sweet-A-Holics
             </div>
 
 

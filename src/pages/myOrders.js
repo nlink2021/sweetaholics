@@ -43,23 +43,33 @@ const MyOrders = (props) =>{
         togglePopup()
     }
     
+
+
+
     return(
         <>
          {showItems === true &&
-            <PopUp togglePopup={togglePopup} isOrder={true} order={currentOrder} orderItems = {orderItems} /> 
+            <PopUp togglePopup={togglePopup} isOrder={true} order={currentOrder} orderItems = {orderItems} />
         }
         <div className = 'page-container'>
             <div className = 'center-row'>
+                <div className = 'cart'>
             <div className = "history-container">
+                <div className = "order-header">
+                <div><h4>Order</h4></div>
+                <div><h4>Address</h4></div>
+                <div><h4>Total</h4></div>
+                </div>
                 {history.map(order=>
                     <div key = {order.id} className = 'order'>
-                        <div onClick={()=>{getItems(order)}} >{moment(order.date).format("MMMM Do YYYY")} </div>
+                        <button className = 'button orderHistory' onClick={()=>{getItems(order)}} >{moment(order.date).format("MMMM Do YYYY")} </button>
                         <div>{order.address}</div>
                         <div>${order.total}</div>
                     </div>
                 )}
                 </div>
             </div>
+        </div>
         </div>
         </>
     )
