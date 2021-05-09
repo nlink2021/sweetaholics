@@ -1,11 +1,5 @@
-import {useContext} from 'react'
-import {UserContext} from '../context/userContext'
 
 const SignUpForm = (props) =>{
-    const {userState} = useContext(UserContext)
-    const [user,setUser] = userState
-
-    
     return(
         <div className = 'center-row'>
             <div className = 'form-container'>
