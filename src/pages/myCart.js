@@ -15,7 +15,6 @@ const MyCart = (props) =>{
 
 
     const getItems = async () =>{
-        // console.log(user);
         let userId = localStorage.getItem('userId') 
             const rez = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
                 headers:{
@@ -23,8 +22,7 @@ const MyCart = (props) =>{
                 }
             })
             setUser(rez.data.user)
-            if(rez.data.message === 'found user'){
-                
+            if(rez.data.message === 'found user'){              
                 const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
                     cartId: rez.data.user.cart.id
                 })

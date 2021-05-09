@@ -6,7 +6,7 @@ const UserContext = createContext()
 const UserProvider = ({children}) => {
     const [user,setUser] = useState({})
     const [sweets, setSweets] = useState([])
-    
+
 
     const fetchUser = async () => {
         let userId = localStorage.getItem('userId') 
@@ -26,11 +26,6 @@ const UserProvider = ({children}) => {
         // console.log(res.data);
         setSweets(res.data.item)
     }
-
-
-
-
-
 
 
 
