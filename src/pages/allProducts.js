@@ -1,11 +1,11 @@
-import {useContext, useState} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import {UserContext} from '../context/userContext'
 import Sweet from '../components/sweet'
 import PopUp from '../components/popUp'
 
 
 
-const AllProducts = () =>{
+const AllProducts = (props) =>{
     const {userState, sweetsState, fetchSweets} = useContext(UserContext)
     const [user,setUser] = userState
     const [sweets, setSweets] = sweetsState
@@ -16,6 +16,9 @@ const AllProducts = () =>{
         setCurrentInfo(item)
         setShowInfo(!showInfo)
     }
+
+    useEffect(()=>{props.setShouldRedirect(false)},[])
+
 
     return(
         <>
