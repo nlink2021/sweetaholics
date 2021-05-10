@@ -68,7 +68,6 @@ const MyCart = (props) =>{
                         </div>
                     :
                     <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} cartId = {user.cart.id} />
-
                     }
 
                 </div>

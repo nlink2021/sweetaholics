@@ -29,16 +29,30 @@ function App() {
           return <SignupLogin signupOrLogin={signupOrLogin} />} 
       }} />
 
-      <Route exact path= '/products' render={()=> <AllProducts />} />
+      <Route exact path= '/products' render={()=> {
+         if(!user.id){
+          return <Redirect to='/' />
+        }else{  
+          return <AllProducts setShouldRedirect={setShouldRedirect} />
+        } 
+      }} />
       <Route exact path= '/cart' render={()=> {
         if(shouldRedirect === true){
           return <Redirect to = '/orders' />
+        }else if(!user.id){
+          return <Redirect to='/' />
         }else{
           return <MyCart setShouldRedirect={setShouldRedirect}/>
         } 
       }} />
       
-      <Route exact path= '/orders' render={()=> <MyOrders setShouldRedirect={setShouldRedirect}/>} />
+      <Route exact path= '/orders' render={()=> {
+         if(!user.id){
+          return <Redirect to='/' />
+        }else{  
+          return <MyOrders setShouldRedirect={setShouldRedirect} />
+        } 
+      }} />
 
 
 

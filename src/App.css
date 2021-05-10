@@ -312,6 +312,10 @@ img{
   width: 60%;
   height: 60%;
 }
+.order-form{
+  display: flex;
+  flex-direction: column;
+}
 
 .order-header{
   display: flex;
