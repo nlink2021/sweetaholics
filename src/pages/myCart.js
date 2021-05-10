@@ -11,37 +11,32 @@ const MyCart = (props) =>{
     const [total, setTotal] = useState(0)
     const [checkout, setCheckout] = useState(false)
 
-    useEffect(()=>{props.setShouldRedirect(false)},[])
-
-
     const getItems = async () =>{
         let userId = localStorage.getItem('userId') 
-            const rez = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
-                headers:{
-                    Authorization: userId
-                }
-            })
-            setUser(rez.data.user)
-            if(rez.data.message === 'found user'){              
-                const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
-                    cartId: rez.data.user.cart.id
-                })
-                setCartItems(res.data.items)
-                let prices = []
-                res.data.items.forEach((item)=>{
-                    prices.push(item.price)
-                })
-                const sum = prices.reduce(add,0)
-                function add(accumulator, a) {
-                    return accumulator + a;
-                }
-                setTotal(sum)
+        const rez = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/verify`, {
+            headers:{
+                Authorization: userId
             }
-        
-
+        })
+        setUser(rez.data.user)
+        if(rez.data.message === 'found user'){              
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/items`,{
+                cartId: rez.data.user.cart.id
+            })
+            setCartItems(res.data.items)
+            let prices = []
+            res.data.items.forEach((item)=>{
+                prices.push(item.price)
+            })
+            const sum = prices.reduce(add,0)
+            function add(accumulator, a) {
+                return accumulator + a;
+            }
+            setTotal(sum)
+        }
     }
-
-
+    
+    useEffect(()=>{props.setShouldRedirect(false)},[])
     useEffect(()=>{getItems()},[])
     useEffect(()=>{setCheckout(false)},[])
 
@@ -52,14 +47,14 @@ const MyCart = (props) =>{
                 <div className = 'cart'>
                     {checkout === false && cartItems.length > 0 ?
                     <>
-                    {cartItems.map((item,i)=>
-                        <CartItem key = {i} item = {item} getItems={getItems}/>
-                    )}
-                    <div className = 'cartItem'>
-                        <div className='cart-title'>Total:</div>
-                        <div className = 'cart-price'>${total} </div>
-                        <button className = 'button remove' onClick={()=>{setCheckout(true)}}>Checkout</button>
-                    </div>
+                        {cartItems.map((item,i)=>
+                            <CartItem key = {i} item = {item} getItems={getItems}/>
+                        )}
+                        <div className = 'cartItem'>
+                            <div className='cart-title'>Total:</div>
+                            <div className = 'cart-price'>${total} </div>
+                            <button className = 'button remove' onClick={()=>{setCheckout(true)}}>Checkout</button>
+                        </div>
                      </>
 
                     :checkout === false && cartItems.length === 0 ?
@@ -69,7 +64,6 @@ const MyCart = (props) =>{
                     :
                     <Stripe total={total} cartItems={cartItems} setShouldRedirect = {props.setShouldRedirect} cartId = {user.cart.id} />
                     }
-
                 </div>
             </div>
         </div>

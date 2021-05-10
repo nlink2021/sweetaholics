@@ -49,6 +49,7 @@ const SignupLogin = (props) =>{
                 setUser(res.data.user)
             }
         } catch (error) {
+            console.log(error);
             alert('Login failed')
         }
     }

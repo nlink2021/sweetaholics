@@ -15,10 +15,6 @@ const PopUp = (props) => {
             {props.isOrder === true && 
                 <OrderInfo order={props.order} orderItems={props.orderItems}/>
             }
-
-
-
-
         </div>
     )
 }

@@ -8,6 +8,7 @@ import SignupLogin from './pages/signup-login'
 import AllProducts from './pages/allProducts'
 import MyCart from './pages/myCart'
 import MyOrders from './pages/myOrders'
+import ManageProducts from './pages/manageProducts'
 
 function App() {
   const {userState, fetchUser, fetchSweets} = useContext(UserContext)
@@ -36,6 +37,7 @@ function App() {
           return <AllProducts setShouldRedirect={setShouldRedirect} />
         } 
       }} />
+      
       <Route exact path= '/cart' render={()=> {
         if(shouldRedirect === true){
           return <Redirect to = '/orders' />
@@ -54,9 +56,15 @@ function App() {
         } 
       }} />
 
-
-
-
+      <Route exact path= '/manage/products' render={()=> {
+         if(!user.id){
+          return <Redirect to='/' />
+        }else if(user.isAdmin === null || user.isAdmin === false){  
+          return <Redirect to='/' />
+        }else if(user.isAdmin === true){
+          return <ManageProducts />
+        }
+      }} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ const Home = () =>{
     const {userState} = useContext(UserContext)
     const [user,setUser] = userState
 
-    return(
+    return(   
         <div className = 'page-container'>
             <div className = 'center-row'>
                 <div className='welcomeMsg'>

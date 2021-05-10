@@ -20,7 +20,6 @@ const Stripe = (props) =>{
             product: product
 
         })
-        console.log(res);
         if(res.status == 200){
             const rez = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/orders/create`,{
               address,city,state,zip,total:props.total
@@ -39,8 +38,6 @@ const Stripe = (props) =>{
                 const rezzz = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/empty`,{
                     cartId: props.cartId
                 })
-                console.log(rezzz);
-
                 props.setShouldRedirect(true)
             }
         }

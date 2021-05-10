@@ -22,7 +22,7 @@ const AllProducts = (props) =>{
 
     return(
         <>
-         {showInfo === true &&
+        {showInfo === true &&
             <PopUp togglePopup={togglePopup} currentInfo={currentInfo} isSweet={true} /> 
         }
         <div className = 'page-container'>
@@ -47,8 +47,7 @@ const AllProducts = (props) =>{
                     item.type === 'Brownie' &&
                         <Sweet key = {item.id} item = {item} togglePopup={togglePopup} isPopup={false} />
                     )}
-                </div>
-                    
+                </div>                  
             </div>
          </div>
        </>
