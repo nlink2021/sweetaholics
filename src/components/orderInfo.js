@@ -18,7 +18,6 @@ const OrderInfo = (props) =>{
     useEffect(()=>{calcTotal()},[])
     return(   
         <div className = 'order-info-container'>
-
             <div className='order-info'>
                 <div>
                     Ordered On: <br/>
@@ -40,8 +39,6 @@ const OrderInfo = (props) =>{
                 )}
             </div>
             <div className = 'order-total'>Total: ${total}.00 </div>
-
-
         </div>
    
     )

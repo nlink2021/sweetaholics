@@ -20,7 +20,6 @@ const Sweet = (props) => {
     }
     useEffect(()=>{setAdded(false)},[])
 
-
     return(
         <>
         {props.isPopup === false && added === false ?

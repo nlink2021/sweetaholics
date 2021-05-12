@@ -366,3 +366,17 @@ img{
   width: 70%;
   overflow-y: scroll;
 }
+
+.pending{
+  width: 80%;
+}
+
+.date:hover{
+  cursor: pointer;
+  color:  rgba(233, 112, 112, 0.815);
+}
+
+.mandaPlease{
+  width: 50%;
+  height: 80%;
+}
